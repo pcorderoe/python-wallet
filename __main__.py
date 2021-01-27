@@ -18,7 +18,7 @@ import os, sys, argparse
 def parse_args():
     parser = argparse.ArgumentParser(description='MasterKey')
 
-    parser.add_argument('action', type=str, help='Is the action to do. (default:get)', choices=['add', 'remove', 'get'], default='get')
+    parser.add_argument('action', type=str, help='Is the action to do. (default:get)', choices=['add', 'remove', 'get', 'genkey'], default='get')
     parser.add_argument('-l','--lock', type=str, help='Is the name or code of the lock to open')
 
     parser.set_defaults(action='get')
@@ -29,14 +29,21 @@ def parse_args():
 def main():
     args = parse_args()
     from masterkey.masterkey import Masterkey
-    obj = Masterkey(args)
+    obj = Masterkey()
 
-    switcher = {
-        'add': obj.add(),
-        'remove': obj.remove(args.lock),
-        'get': obj.get(args.lock)
-    }.get(args.action)
 
+    if args.action == 'get':
+        obj.get(args.lock)
+        pass
+    if args.action == 'add':
+        obj.add()
+        pass
+    if args.action == 'remove':
+        obj.remove(args.lock)
+        pass
+    if args.action == 'genkey':
+        obj.generatekey()
+        pass
     pass
 
 if(__name__) == '__main__':
