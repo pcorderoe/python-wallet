@@ -1,0 +1,8 @@
+setup.py
+masterkey/__init__.py
+masterkey/__main__.py
+masterkey/masterkey.py
+masterkey.egg-info/PKG-INFO
+masterkey.egg-info/SOURCES.txt
+masterkey.egg-info/dependency_links.txt
+masterkey.egg-info/top_level.txt
